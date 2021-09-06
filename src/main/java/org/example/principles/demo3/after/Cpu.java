@@ -1,0 +1,6 @@
+package org.example.principles.demo3.after;
+
+public interface Cpu {
+    //运行cpu
+    public void run();
+}
