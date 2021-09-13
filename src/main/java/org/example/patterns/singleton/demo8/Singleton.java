@@ -1,19 +1,28 @@
 package org.example.patterns.singleton.demo8;
 
 public class Singleton {
-    // 私有构造方法(无法new出该类)
-    private Singleton(){}
 
-    // 声明Singleton类型的变量
-    private static Singleton instance;  //null
+    private static boolean flag = false;
 
-    // 在静态代码块中进行赋值
-    static {
-        instance = new Singleton();
+    private Singleton() {
+        synchronized (Singleton.class) {
+            //判断flag值为true说明非第一次访问,抛出异常
+            if(flag) {
+                throw new RuntimeException("不能创建多个对象");
+            }
+            //将flag的值设置为true
+            flag = true;
+        }
     }
 
-    // 对外提供获取该类对象的方法
+    private static class SingletonHolder {
+        // 在内部类中声明并初始化外部类的对象
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    //提供公共访问方式
     public static Singleton getInstance() {
-        return instance;
+        return Singleton.SingletonHolder.INSTANCE;
     }
+
 }
