@@ -1,4 +1,4 @@
-package org.example.patterns.prototype.test;
+package org.example.patterns.prototype.test1;
 
 public class Citation implements Cloneable{
 
@@ -29,6 +29,12 @@ public class Citation implements Cloneable{
 
     @Override
     public Citation clone() throws CloneNotSupportedException {
-        return (Citation) super.clone();
+        /**
+         * 深克隆:在citation的clone中把student克隆一下,这样在克隆citation时相当于
+         * 把citation的成员变量以及student中的成员变量全部克隆了一下
+         */
+        Citation citation= (Citation) super.clone();
+        citation.stu = stu.clone();
+        return citation;
     }
 }
