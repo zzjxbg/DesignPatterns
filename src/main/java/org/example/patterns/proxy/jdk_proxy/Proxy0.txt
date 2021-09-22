@@ -1,0 +1,33 @@
+//程序运行过程中动态生成的代理类
+public final class $Proxy0 extends Proxy implements SellTickets {
+    private static Method m3;
+
+    public $Proxy0(InvocationHandler invocationHandler) {
+        super(invocationHandler);
+    }
+
+    static {
+        m3 = Class.forName("org.example.proxy.dynamic.jdk.SellTickets").getMethod("sell", new Class[0]);
+    }
+
+    public final void sell() {
+        this.h.invoke(this, m3, null);
+    }
+}
+
+//Java提供的动态代理相关类
+public class Proxy implements java.io.Serializable {
+	protected InvocationHandler h;
+
+	protected Proxy(InvocationHandler h) {
+        this.h = h;
+    }
+}
+
+-代理类（$Proxy0）实现了SellTickets.这也就印证了真实类和代理类实现同样的接口.
+-代理类（$Proxy0）将我们提供了的匿名内部类对象传递给了父类.
+执行流程:
+    -1.在测试类中通过代理对象调用sell()方法
+    -2.根据多态的特性,执行的是代理类($Proxy0)中的sell()方法
+    -3.代理类($Proxy0)中的sell()方法中又调用了InvocationHandler接口的子实现类对象的invoke方法
+    -4.invoke方法通过反射执行了真实对象所属类(TrainStation)中的sell()方法

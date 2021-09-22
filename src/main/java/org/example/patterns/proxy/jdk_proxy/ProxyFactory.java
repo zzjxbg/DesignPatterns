@@ -6,6 +6,9 @@ import java.lang.reflect.Proxy;
 
 /**
  * 获取代理对象的工厂类
+ * ProxyFactory不是代理模式中所说的代理类,而代理类是程序在运行过程中动态的在内存中生成的类,
+ * 通过阿里巴巴开源的 Java 诊断工具（Arthas【阿尔萨斯】）查看代理类的结构
+ *
  */
 public class ProxyFactory {
 

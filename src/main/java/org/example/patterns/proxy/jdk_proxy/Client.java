@@ -9,5 +9,10 @@ public class Client {
         SellTickets proxyObject = factory.getProxyObject();
         //3.调用卖票的方法
         proxyObject.sell();
+
+        System.out.println(proxyObject.getClass());
+
+        //让程序一直执行
+        while(true){}
     }
 }
