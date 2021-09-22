@@ -23,6 +23,7 @@ public class ProxyFactory {
          * Class<?>[] interfaces: 代理类实现的接口的字节码对象
          * InvocationHandler: 代理对象的调用处理程序
          */
+        //编译看左边,运行看右边
         SellTickets proxyObject = (SellTickets) Proxy.newProxyInstance(
                 station.getClass().getClassLoader(),
                 station.getClass().getInterfaces(),
