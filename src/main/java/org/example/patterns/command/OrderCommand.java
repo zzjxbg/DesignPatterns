@@ -24,6 +24,7 @@ public class OrderCommand implements Command{
         //遍历map集合
         Set<String> keys = footDic.keySet();
         for (String foodName : keys) {
+            // 调用接收者的功能来完成命令要执行的操作
             receiver.makeFood(footDic.get(foodName),foodName);
         }
         System.out.println(order.getDiningTable() + "桌的饭弄好了");
